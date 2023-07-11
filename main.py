@@ -1,27 +1,34 @@
-data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-top = -1
-pos = len(data) - 1
+class Stack:
+
+    def __init__(self):
+        self.__data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        self.__top = -1
+        self.item = None
+
+    def pop(self):
+        if self.__top != -1:
+            self.__top -= 1
+            return self.__data[self.__top + 1]
+
+    def data(self):
+        return self.__data
+
+    def push(self, item):
+        self.__top += 1
+        if self.__top > (len(self.__data) - 1):
+            print("ERROR")
+        else:
+            self.__data[self.__top] = item
+        return self.__data[self.__top]
 
 
-def pop():
-    global top, data
-    return data[top]
-
-
-def push(item):
-    global top, data
-    top += 1
-    if top > (len(data) - 1):
-        print("ERROR")
-    else:
-        data[top] = item
-    return data[top]
-
-
-print(top)
-push("Apple")
-push("melon")
-push("lemon")
-print(pop())
-print(pop())
-print(data)
+myStack = Stack()
+myStack.push("Melon")
+myStack.push("Apple")
+myStack.push("Grape")
+print(myStack.pop())
+print(myStack.data())
+print(myStack.pop())
+print(myStack.data())
+print(myStack.pop())
+print(myStack.data())
